@@ -1,0 +1,33 @@
+.container_navbar{
+    display:flex;
+    justify-content:space-around;
+}
+.nav_buttoms{
+    // margin: auto;
+    display: flex;
+    align-items:center;
+}
+.title{
+    margin-left: 20px;
+}
+.button_nav{
+    margin: 20px;
+}
+.button_nav button{
+    height:35px;
+    width: 150px;
+    border-radius:50px;
+    border: 1px solid #FF2F73;
+    background-color: white;
+    color: #FF2F73
+}
+button:hover{
+    background-color: #FF2F73;
+    color:white;
+    border: 1px solid #FF2F73;
+
+}
+.navbar_link {
+    text-decoration: none;
+    color:black;
+}

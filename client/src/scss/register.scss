@@ -1,0 +1,32 @@
+.contain_register{
+    display: flex;
+    justify-content:center;
+    align-items:center;
+    height: 700px;
+    width: 100%;
+    background-color:#3F70F9
+}
+.form_register{
+    display: flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+}
+.form_login input{
+    height:50px;
+    width: 300px;
+    border-radius:5px;
+    border: 0px solid #FF2F73;
+    background-color: white;
+    font-size: 20px;
+
+}
+.form_register button{
+    height:50px;
+    width: 250px;
+    border-radius:50px;
+    border: 1px solid #FF2F73;
+    background-color: #FF2F73;
+    color: white;
+    font-size: 20px;
+}
