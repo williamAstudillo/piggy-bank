@@ -24,7 +24,7 @@ export default {
   ...mapActions(['sendMail','changeState']),
   send(){
     if(!this.user.email.includes('@') || !this.user.email.includes('.') ) return alert('Write a valid email')
-    if(!this.user.email || !this.user.subject || !this.user.message)return alert('Plase complete all fields')
+    if(!this.user.email || !this.user.subject || !this.user.message)return alert('Please complete all fields')
     this.sendMail(this.user)
     var aux=this.user.message
     var aux2=this.user.subject
@@ -35,6 +35,7 @@ export default {
     }
     this.sendMail(obj)
     this.user ={}
+    alert('Yout email was send')
   }
  }
 }

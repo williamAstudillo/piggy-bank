@@ -44,7 +44,7 @@ import {mapActions,mapState} from 'vuex'
   },
   methods:{
       async send(){
-        if(!parseInt(this.data.sendMoney) )return alert('id or mount of monet should be a number')
+        if(!parseInt(this.data.sendMoney) )return alert('Id or mount of money should be a number')
         var find = this.dataUser.find(e=>e.idNumber == this.data.iduser )
         if(!find)return alert('This user does not have a wallet')
         await firebase.db.collection('users-bank').doc(find.id).update({

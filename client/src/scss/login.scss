@@ -41,3 +41,19 @@
 .form_login a{
     color: #FF2F73;
 }
+#form_send{
+    height:50px;
+    width: 50px;
+    font-size:15px;
+}
+#form_p2{
+    display:none;
+}
+@media (max-width:656px){
+    #form_p1{
+     display:none;
+    }
+    #form_p2{
+     display:block;
+    }
+}

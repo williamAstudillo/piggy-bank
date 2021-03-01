@@ -1,8 +1,9 @@
 <template>
   <div class="home_container">
     <container class="info_container">
-     Hi Welcome back <strong>{{user.name}}</strong><br><br><br>
-     Your balance is <strong>${{balance}}</strong>
+     Hi Welcome back:<strong>{{user.name}}</strong><br><br>
+     Your id is:<strong>{{user.idNumber}}</strong><br><br>
+     Your balance is:<strong>${{balance}}</strong>
     </container>
    <form v-on:submit.prevent="send">
      <h1 >Deposit funds to your<br>or someone's wallet</h1>
@@ -39,7 +40,7 @@ import router from '../router/index'
   },
   created(){
     if(!this.user) {
-      router.push('/login')
+      router.push('/piggybank')
     }
     this.setBalance()
  },
@@ -57,6 +58,7 @@ import router from '../router/index'
              balance:this.balance-this.data.withdraw
           })
            this.balance=this.balance-this.data.withdraw
+           alert(`You withdrew $${this.data.withdraw}`)
            this.data.withdraw =''
         }else{
            this.data.withdraw =''
@@ -65,7 +67,7 @@ import router from '../router/index'
       },
       async send(){
         console.log( parseInt(this.data.sendMoney) )
-        if(!parseInt(this.data.sendMoney) )return alert('id or mount of monet should be a number')
+        if(!parseInt(this.data.sendMoney) )return alert('Id or mount of money should be a number')
         var find = this.dataUser.find(e=>e.idNumber == this.data.iduser )
         if(!find)return alert('This user does not have a wallet')
         console.log(this.user.idNumber,this.data.iduser)
@@ -74,8 +76,10 @@ import router from '../router/index'
            balance:parseInt(find.balance) + parseInt(this.data.sendMoney)
          })
          this.balance=this.balance+ parseInt(this.data.sendMoney)
+          alert(`You deposited in your wallet $${this.data.sendMoney}`)
           this.data.iduser=''
          this.data.sendMoney=''
+
          return 
          
         }
@@ -86,7 +90,7 @@ import router from '../router/index'
           await firebase.db.collection('users-bank').doc(find.id).update({
            balance:parseInt(find.balance) + parseInt(this.data.sendMoney)
          })
-        alert(`You send ${this.data.sendMoney} to ${find.name} `)
+        alert(`You send $${this.data.sendMoney} to ${find.name} `)
          this.balance=this.balance-this.data.sendMoney
          this.getDataUser()
          this.data.iduser=''

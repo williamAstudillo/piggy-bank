@@ -5,7 +5,8 @@
     <input type="email" v-model="user.email" placeholder="  Email" class="form_input"/><br><br>
     <input type="password" v-model="user.password" placeholder="  Password" class="form_input" /><br><br>
     <button>Iniciar sesión </button>
-    <p>Do not have an account ? you can still send money <a href="/send">  here!</a></p>
+    <p id ='form_p1'>Do not have an account ? you can still send money <button @click="sendTo" id='form_send'>  here!</button></p>
+    <p id ='form_p2' >Do not have an account ? <br>you can still send money <button @click="sendTo" id='form_send'>  here!</button></p>
   </form>
  
   </div>
@@ -29,6 +30,9 @@ export default {
  },
  methods:{
      ...mapActions(['getUser','getDataUser']),
+     sendTo(){
+       router.push('/send')
+     },
      typing(e){
          this.name= e.target.value
      },
