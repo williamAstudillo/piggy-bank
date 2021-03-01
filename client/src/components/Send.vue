@@ -1,6 +1,6 @@
 <template>
-  <div class="home_container">
-   <form v-on:submit.prevent="send">
+  <div class="contain_send">
+   <form v-on:submit.prevent="send" class="form_send">
      <h1>Send money to another wallet</h1>
     <input type="text" v-model="data.iduser" placeholder="  Id User to send"/><br><br>
     <input type="text" v-model="data.sendMoney" placeholder="  Mount of money"/><br><br>
@@ -16,7 +16,7 @@ import firebase from '../main'
  export default {
   name: 'Send',
   computed:{
-    ...mapState(['user','dataUser'])
+    ...mapState(['dataUser'])
   },
    data(){
     return {
@@ -24,15 +24,13 @@ import firebase from '../main'
       
     }
   },
-  created(){
-     this.setBalance()
- },
+  beforeCreated(){
+     this.getDataUser()
+  },
   components: {
   },
   methods:{
-    ...mapActions(['getUser','getDataUser']),
       async send(){
-        // var data= this.dataUser;
         var find = this.dataUser.find(e=>e.idNumber == this.data.iduser )
         if(!find)return alert('This user does not have a wallet')
         if(this.balance >= parseInt(this.data.sendMoney)){

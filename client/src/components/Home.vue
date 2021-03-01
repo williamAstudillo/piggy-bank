@@ -1,11 +1,11 @@
 <template>
   <div class="home_container">
     <container class="info_container">
-     Hi Welcome back {{user.name}}<br><br>
-     Your balance is ${{balance || 0}}
+     Hi Welcome back <strong>{{user.name}}</strong><br><br><br>
+     Your balance is <strong>${{balance}}</strong>
     </container>
    <form v-on:submit.prevent="send">
-     <h1>Send money to another wallet</h1>
+     <h1 >Deposit funds to your<br>or someone's wallet</h1>
     <input type="text" v-model="data.iduser" placeholder="  Id User to send"/><br><br>
     <input type="text" v-model="data.sendMoney" placeholder="  Mount of money"/><br><br>
     <button>Send</button>
@@ -46,6 +46,7 @@ import firebase from '../main'
         this.balance=this.user.balance
       },
       withdraw(){
+        if(!parseInt(this.data.sendMoney) )return alert('id or mount of monet should be a number')
         if(this.balance >= parseInt(this.data.withdraw)){
           firebase.db.collection('users-bank').doc(this.user.id).update({
              balance:this.balance-this.data.withdraw
@@ -58,9 +59,18 @@ import firebase from '../main'
         }
       },
       async send(){
-        // var data= this.dataUser;
+        console.log( parseInt(this.data.sendMoney) )
+        if(!parseInt(this.data.sendMoney) )return alert('id or mount of monet should be a number')
         var find = this.dataUser.find(e=>e.idNumber == this.data.iduser )
         if(!find)return alert('This user does not have a wallet')
+        console.log(this.user.idNumber,this.data.iduser)
+        if(this.user.idNumber == this.data.iduser){
+          await firebase.db.collection('users-bank').doc(find.id).update({
+           balance:parseInt(find.balance) + parseInt(this.data.sendMoney)
+         })
+         return this.balance=this.balance+ parseInt(this.data.sendMoney)
+         
+        }
         if(this.balance >= parseInt(this.data.sendMoney)){
           await firebase.db.collection('users-bank').doc(this.user.id).update({
            balance:this.balance-this.data.sendMoney

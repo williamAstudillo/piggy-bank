@@ -20,6 +20,7 @@ export default {
   methods:{
   ...mapActions(['sendMail']),
   send(){
+    if(!this.user.email.includes('@') || !this.user.email.includes('@') ) return alert('Write a valid email')
     if(!this.user.email || this.user.subject || this.user.message)return alert('Plase complete all fields')
     console.log('me ejecute')
     this.sendMail(this.user)

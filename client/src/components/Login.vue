@@ -5,7 +5,7 @@
     <input type="email" v-model="user.email" placeholder="  Email" class="form_input"/><br><br>
     <input type="password" v-model="user.password" placeholder="  Password" class="form_input" /><br><br>
     <button>Iniciar sesión </button>
-    <p>Do not have account ?, you can still send money <a href="/send">  here!</a></p>
+    <p>Do not have an account ? you can still send money <a href="/send">  here!</a></p>
   </form>
  
   </div>

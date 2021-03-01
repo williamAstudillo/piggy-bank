@@ -1,0 +1,36 @@
+.contain_send{
+    display: flex;
+    justify-content:center;
+    align-items:center;
+    height: 535px;
+    background-color:#3F70F9;
+    width: 100%;
+    flex-direction: column;
+}
+.form_send{
+    display: flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+}
+.form_send input{
+    height:50px;
+    width: 300px;
+    border-radius:5px;
+    border: 0px solid #3F70F9;
+    background-color: white;
+    font-size: 20px;
+
+}
+.form_send button{
+    height:50px;
+    width: 250px;
+    border-radius:50px;
+    border: 1px solid #FF2F73;
+    background-color: #FF2F73;
+    color: white;
+    font-size: 20px;
+}
+.form_send h1{
+    color:white;
+}
