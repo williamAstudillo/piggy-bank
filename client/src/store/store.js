@@ -9,7 +9,8 @@ Vue.use(Vuex)
 export default new Vuex.Store({
     state: {
         user:'',
-        dataUser:[]
+        dataUser:[],
+        confirmationEmail:false
     },
     actions: {
         getUser({commit},user) {
@@ -33,7 +34,6 @@ export default new Vuex.Store({
             commit('setDataUser',aux)
         },
         sendMail({commit},user){
-            console.log(user)
             axios.post('https://app-piggy-bank.herokuapp.com/',
                 {
                     to:user.email,
@@ -41,18 +41,23 @@ export default new Vuex.Store({
                     subject:user.subject
                 })
                 .then(res=>{
-                    console.log(res)
-                    alert('Email sent')
+                    commit('setMail',true)
                 })
-        }
+        },
+       
+
     },
     mutations: {
         setUser(state,user) {
+            // localStorage.setItem('user', JSON.stringify(user))
             state.user=user
         },
         setDataUser(state,aux){
             state.dataUser=aux
-        }
+        },
+        setMail(state,res){
+            state.confirmationEmail=res
+        },
     },
     modules: {
     }

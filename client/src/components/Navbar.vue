@@ -40,7 +40,6 @@
       <button  @click="logout" >Logout</button>
       </router-link>
 
-
     </container>
     </container>
     <div>
@@ -65,6 +64,7 @@ import firebase from '../main'
       firebase.firebase.auth().signOut().then(()=>console.log('sign out'))
       this.getUser('')
       router.push('/login')
+      localStorage.setItem('user', null)
     }
   }
 }

@@ -31,3 +31,22 @@ button:hover{
     text-decoration: none;
     color:black;
 }
+
+
+@media (max-width: 656px){
+    .button_nav button{
+    height:38px;
+    width: 80px;
+    border-radius:50px;
+    border: 1px solid #FF2F73;
+    background-color: white;
+    color: #FF2F73;
+    font-size: 15px;
+}
+.title{
+    display:none
+}
+.button_nav{
+    margin: 10px;
+}
+}

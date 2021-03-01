@@ -41,7 +41,7 @@ import router from '../router/index'
     if(!this.user) {
       router.push('/login')
     }
-     this.setBalance()
+    this.setBalance()
  },
   components: {
   },
@@ -86,6 +86,7 @@ import router from '../router/index'
           await firebase.db.collection('users-bank').doc(find.id).update({
            balance:parseInt(find.balance) + parseInt(this.data.sendMoney)
          })
+        alert(`You send ${this.data.sendMoney} to ${find.name} `)
          this.balance=this.balance-this.data.sendMoney
          this.getDataUser()
          this.data.iduser=''

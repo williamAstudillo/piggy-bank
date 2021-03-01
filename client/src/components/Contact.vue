@@ -10,19 +10,21 @@
 </template>
 
 <script>
-import {mapActions} from 'vuex'
+import {mapActions,mapState} from 'vuex'
 export default {
   data(){
     return {
       user:{},   
     }
   },
+   computed:{
+      ...mapState(['confirmationEmail'])
+  },
   methods:{
-  ...mapActions(['sendMail']),
+  ...mapActions(['sendMail','changeState']),
   send(){
-    if(!this.user.email.includes('@') || !this.user.email.includes('@') ) return alert('Write a valid email')
+    if(!this.user.email.includes('@') || !this.user.email.includes('.') ) return alert('Write a valid email')
     if(!this.user.email || !this.user.subject || !this.user.message)return alert('Plase complete all fields')
-    console.log('me ejecute')
     this.sendMail(this.user)
     var aux=this.user.message
     var aux2=this.user.subject
@@ -32,6 +34,7 @@ export default {
       subject:aux2
     }
     this.sendMail(obj)
+    this.user ={}
   }
  }
 }

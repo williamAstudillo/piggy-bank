@@ -10,13 +10,14 @@
 </template>
 
 <script>
-// import {mapState,mapActions} from 'vuex'
+
 import firebase from '../main'
+import {mapActions,mapState} from 'vuex'
 
  export default {
   name: 'Send',
   computed:{
-    // ...mapState(['dataUser'])
+      ...mapState(['confirmationEmail'])
   },
    data(){
     return {
@@ -41,10 +42,7 @@ import firebase from '../main'
             })  
         this.dataUser =aux
   },
-  components: {
-  },
   methods:{
-    // ...mapActions(['getUser','getDataUser']),
       async send(){
         if(!parseInt(this.data.sendMoney) )return alert('id or mount of monet should be a number')
         var find = this.dataUser.find(e=>e.idNumber == this.data.iduser )
@@ -52,7 +50,7 @@ import firebase from '../main'
         await firebase.db.collection('users-bank').doc(find.id).update({
         balance:parseInt(find.balance) + parseInt(this.data.sendMoney)
         })
-        alert('Done')
+        alert(`You send ${this.data.sendMoney} to ${find.name} `)
          this.dataUser.map(e=>{
              if(e.id ===find.id){
                  e.balance = e.balance + parseInt(this.data.sendMoney)
