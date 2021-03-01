@@ -9,12 +9,11 @@
       </router-link> 
     <container class="nav_buttoms">
       <router-link 
-       to="/login" 
-       v-if="!$store.state.user"
-        class="button_nav"
+       to="/contact"
+       class="button_nav"
       >
-      <button>Login</button> 
-      </router-link> 
+      <button >Contact us </button>
+      </router-link>
 
       <router-link
         to="/register"
@@ -25,11 +24,13 @@
       </router-link>
 
       <router-link 
-       to="/contact"
-       class="button_nav"
+       to="/login" 
+       v-if="!$store.state.user"
+        class="button_nav"
       >
-      <button >Contact us </button>
-      </router-link>
+      <button>Login</button> 
+      </router-link> 
+
 
       <router-link 
        to="/login"

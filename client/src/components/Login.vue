@@ -25,17 +25,10 @@ export default {
     }
  },
  created(){
-     this.getDataUser(),
-     this.isAuthenticated()
+     this.getDataUser()
  },
  methods:{
      ...mapActions(['getUser','getDataUser']),
-     isAuthenticated(){
-         if(this.$store.state.user){
-                 router.push('/home') 
-             
-         }
-     },
      typing(e){
          this.name= e.target.value
      },

@@ -10,45 +10,58 @@
 </template>
 
 <script>
-import {mapState,mapActions} from 'vuex'
+// import {mapState,mapActions} from 'vuex'
 import firebase from '../main'
 
  export default {
   name: 'Send',
   computed:{
-    ...mapState(['dataUser'])
+    // ...mapState(['dataUser'])
   },
    data(){
     return {
       data:{},
-      
+      dataUser:''
     }
   },
-  beforeCreated(){
-     this.getDataUser()
+  mounted(){
+     var aux = []
+             firebase.db.collection('users-bank').onSnapshot((snap) => {
+                snap.docs.forEach(doc => {
+                    const { name, email, balance, idNumber } = doc.data();
+                    aux.push({
+                        id: doc.id,
+                        name,
+                        email,
+                        balance,
+                        idNumber
+                    })
+                    
+                })
+            })  
+        this.dataUser =aux
   },
   components: {
   },
   methods:{
+    // ...mapActions(['getUser','getDataUser']),
       async send(){
+        if(!parseInt(this.data.sendMoney) )return alert('id or mount of monet should be a number')
         var find = this.dataUser.find(e=>e.idNumber == this.data.iduser )
         if(!find)return alert('This user does not have a wallet')
-        if(this.balance >= parseInt(this.data.sendMoney)){
-          await firebase.db.collection('users-bank').doc(this.user.id).update({
-           balance:this.balance-this.data.sendMoney
-         })
-          await firebase.db.collection('users-bank').doc(find.id).update({
-           balance:parseInt(find.balance) + parseInt(this.data.sendMoney)
-         })
-         this.balance=this.balance-this.data.sendMoney
-          this.getDataUser()
-         this.data.iduser=''
-         this.data.sendMoney=''
-        //   
-        }else{
-          alert('You do not have enough money')
-        }
-     }
+        await firebase.db.collection('users-bank').doc(find.id).update({
+        balance:parseInt(find.balance) + parseInt(this.data.sendMoney)
+        })
+        alert('Done')
+         this.dataUser.map(e=>{
+             if(e.id ===find.id){
+                 e.balance = e.balance + parseInt(this.data.sendMoney)
+             }
+         })    
+        this.data.iduser=''
+        this.data.sendMoney=''
+     },
+     
   }
 }
 </script>

@@ -23,6 +23,8 @@
 // import {mapActions} from 'vuex'
 import {mapState,mapActions} from 'vuex'
 import firebase from '../main'
+import router from '../router/index'
+
 
  export default {
   name: 'Home',
@@ -36,6 +38,9 @@ import firebase from '../main'
     }
   },
   created(){
+    if(!this.user) {
+      router.push('/login')
+    }
      this.setBalance()
  },
   components: {
@@ -46,7 +51,7 @@ import firebase from '../main'
         this.balance=this.user.balance
       },
       withdraw(){
-        if(!parseInt(this.data.sendMoney) )return alert('id or mount of monet should be a number')
+        if(!parseInt(this.data.withdraw) )return alert('id or mount of monet should be a number')
         if(this.balance >= parseInt(this.data.withdraw)){
           firebase.db.collection('users-bank').doc(this.user.id).update({
              balance:this.balance-this.data.withdraw
@@ -68,7 +73,10 @@ import firebase from '../main'
           await firebase.db.collection('users-bank').doc(find.id).update({
            balance:parseInt(find.balance) + parseInt(this.data.sendMoney)
          })
-         return this.balance=this.balance+ parseInt(this.data.sendMoney)
+         this.balance=this.balance+ parseInt(this.data.sendMoney)
+          this.data.iduser=''
+         this.data.sendMoney=''
+         return 
          
         }
         if(this.balance >= parseInt(this.data.sendMoney)){
@@ -79,7 +87,7 @@ import firebase from '../main'
            balance:parseInt(find.balance) + parseInt(this.data.sendMoney)
          })
          this.balance=this.balance-this.data.sendMoney
-          this.getDataUser()
+         this.getDataUser()
          this.data.iduser=''
          this.data.sendMoney=''
         //   
