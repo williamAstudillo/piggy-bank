@@ -1,25 +1,38 @@
 <template>
-  <div >
-    <form v-on:submit.prevent="register" class="form_login">
+  <div class="contain_contact">
+    <form v-on:submit.prevent="send" class="form_contact">
     <input type="email" v-model="user.email" placeholder="  Email from"/><br><br>
     <input type="subject" v-model="user.subject" placeholder="  Subject"/><br><br>
-    <input type="message" v-model="user.message" placeholder="  Message"/><br><br>
+    <input type="message" v-model="user.message" placeholder="  Message" id='message'/><br><br>
+    <button>Enviar mail </button>
     </form>
-    <button>Registrarse</button>
   </div>
 </template>
 
 <script>
+import {mapActions} from 'vuex'
 export default {
-  name: 'Contact',
-  components: {
-   
-  },
   data(){
     return {
-      user:{}         
+      user:{},   
     }
- },
+  },
+  methods:{
+  ...mapActions(['sendMail']),
+  send(){
+    if(!this.user.email || this.user.subject || this.user.message)return alert('Plase complete all fields')
+    console.log('me ejecute')
+    this.sendMail(this.user)
+    var aux=this.user.message
+    var aux2=this.user.subject
+    var obj={
+      email:'app.piggybank@gmail.com',
+      message:aux,
+      subject:aux2
+    }
+    this.sendMail(obj)
+  }
+ }
 }
 </script>
 

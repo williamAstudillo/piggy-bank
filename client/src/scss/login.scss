@@ -2,9 +2,10 @@
     display: flex;
     justify-content:center;
     align-items:center;
-    height: 700px;
+    height: 535px;
     background-color:#3F70F9;
     width: 100%;
+    flex-direction: column;
 }
 .form_login{
     display: flex;
@@ -29,4 +30,14 @@
     background-color: #FF2F73;
     color: white;
     font-size: 20px;
+}
+.contain_login h1{
+    color:white;
+    margin-bottom: 50px;
+}
+.form_login p{
+    color: white;
+}
+.form_login a{
+    color: #FF2F73;
 }

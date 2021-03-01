@@ -4,6 +4,7 @@ import Login from '../components/Login'
 import Register from '../components/Register'
 import Home from '../components/Home'
 import Contact from '../components/Contact'
+import Send from '../components/Send'
 
 Vue.use(VueRouter)
 
@@ -27,6 +28,11 @@ const routes = [
         path: '/contact',
         name: 'contact',
         component: Contact
+    },
+    {
+        path: '/send',
+        name: 'send',
+        component: Send
     }
 ]
 

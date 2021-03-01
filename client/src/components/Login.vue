@@ -1,14 +1,13 @@
 <template>
   <div class="contain_login">
+    <h1>Log in </h1>
   <form v-on:submit.prevent="submit" class="form_login"> 
     <input type="email" v-model="user.email" placeholder="  Email" class="form_input"/><br><br>
     <input type="password" v-model="user.password" placeholder="  Password" class="form_input" /><br><br>
     <button>Iniciar sesión </button>
+    <p>Do not have account ?, you can still send money <a href="/send">  here!</a></p>
   </form>
-  <!-- <h1>{{$store.state}}</h1> -->
-    <!-- <li v-for="data in $store.state.dataUser.name" :key="data.name">
-        {{$store.state.dataUser.name}}
-    </li> -->
+ 
   </div>
 </template>
 

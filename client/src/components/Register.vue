@@ -1,12 +1,13 @@
 <template>
   <div  class="contain_register">
-  <form v-on:submit.prevent="register" class="form_login">
+    <h1>Register</h1>
+  <form v-on:submit.prevent="register" class="form_register">
     <input type="name" v-model="user.name" placeholder="  Name"/><br><br>
     <input type="last_name" v-model="user.last_name" placeholder="  Last name"/><br><br>
     <input type="idNumber" v-model="user.idNumber" placeholder="  Id Number"/><br><br>
     <input type="email" v-model="user.email" placeholder="  Email"/><br><br>
     <input type="password" v-model="user.password" placeholder="  Password"/><br><br>
-    <button>Registrarse</button>
+    <button>Register</button>
   </form>
   
   </div>

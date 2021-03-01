@@ -2,9 +2,10 @@
     display: flex;
     justify-content:center;
     align-items:center;
-    height: 700px;
+    height: 535px;
     width: 100%;
-    background-color:#3F70F9
+    background-color:#3F70F9;
+    flex-direction:column;
 }
 .form_register{
     display: flex;
@@ -12,8 +13,8 @@
     justify-content:center;
     align-items:center;
 }
-.form_login input{
-    height:50px;
+.form_register input{
+    height:33px;
     width: 300px;
     border-radius:5px;
     border: 0px solid #FF2F73;
@@ -29,4 +30,8 @@
     background-color: #FF2F73;
     color: white;
     font-size: 20px;
+}
+.contain_register h1{
+    color:white;
+    margin-bottom: 50px;
 }

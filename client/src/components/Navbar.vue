@@ -25,6 +25,13 @@
       </router-link>
 
       <router-link 
+       to="/contact"
+       class="button_nav"
+      >
+      <button >Contact us </button>
+      </router-link>
+
+      <router-link 
        to="/login"
        v-if="$store.state.user"
        class="button_nav"
@@ -32,13 +39,6 @@
       <button  @click="logout" >Logout</button>
       </router-link>
 
-      <router-link 
-       to="/contact"
-       v-if="$store.state.user"
-       class="button_nav"
-      >
-      <button >Contact us </button>
-      </router-link>
 
     </container>
     </container>
