@@ -73,7 +73,7 @@ import router from '../router/index'
         console.log(this.user.idNumber,this.data.iduser)
         if(this.user.idNumber == this.data.iduser){
           await firebase.db.collection('users-bank').doc(find.id).update({
-           balance:parseInt(find.balance) + parseInt(this.data.sendMoney)
+           balance:parseInt(this.balance) + parseInt(this.data.sendMoney)
          })
          this.balance=this.balance+ parseInt(this.data.sendMoney)
           alert(`You deposited in your wallet $${this.data.sendMoney}`)

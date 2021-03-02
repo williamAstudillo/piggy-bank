@@ -1,7 +1,8 @@
 <template>
   <div class="contain_send">
    <form v-on:submit.prevent="send" class="form_send">
-     <h1>Send money to another wallet</h1>
+     <h1 id="form_h1">Send money to another wallet</h1>
+     <h1 id="form_h2">Send money to <br>another wallet</h1>
     <input type="text" v-model="data.iduser" placeholder="  Id User to send"/><br><br>
     <input type="text" v-model="data.sendMoney" placeholder="  Mount of money"/><br><br>
     <button>Send</button>
@@ -12,7 +13,7 @@
 <script>
 
 import firebase from '../main'
-import {mapActions,mapState} from 'vuex'
+import {mapState} from 'vuex'
 
  export default {
   name: 'Send',
@@ -50,7 +51,7 @@ import {mapActions,mapState} from 'vuex'
         await firebase.db.collection('users-bank').doc(find.id).update({
         balance:parseInt(find.balance) + parseInt(this.data.sendMoney)
         })
-        alert(`You send ${this.data.sendMoney} to ${find.name} `)
+        alert(`You send $${this.data.sendMoney} to ${find.name} `)
          this.dataUser.map(e=>{
              if(e.id ===find.id){
                  e.balance = e.balance + parseInt(this.data.sendMoney)

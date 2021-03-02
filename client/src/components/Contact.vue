@@ -35,7 +35,7 @@ export default {
     }
     this.sendMail(obj)
     this.user ={}
-    alert('Yout email was send')
+    alert('Your email was send')
   }
  }
 }

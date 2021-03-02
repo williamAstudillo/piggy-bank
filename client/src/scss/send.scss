@@ -35,3 +35,14 @@
     color:white;
     margin-bottom: 50px;
 }
+#form_h2{
+    display:none
+}
+@media (max-width: 656px){
+    #form_h1{
+        display:none
+    }
+    #form_h2{
+        display:block;
+    }
+}
